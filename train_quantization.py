@@ -189,7 +189,6 @@ class Trainer:
                 saved_model = f"quantized_{self.model_name}_{acc.item()}.pt"
 
                 best_acc = acc.item()
-
                 model_int8 = torch.ao.quantization.convert(self.model)
 
                 torch.save(model_int8, f"quantized_{self.model_name}_{acc.item()}.pt")
@@ -211,8 +210,7 @@ def parse_args():
     parser.add_argument("--image-size", type=int, help="Training height", default=224)
     parser.add_argument("--workers", type=int, help="Dataloader Workers", default=8)
     parser.add_argument("--lr", type=int, help="Learning Rate", default=1e-3)
-    # parser.add_argument('--model', type=str, default='resnet50', help='Your Quantization Model', choices=list_of_models)
-    parser.add_argument('--weights', type=str, default=None, help='Timm Used Model')
+    parser.add_argument('--weights', type=str, default=None, required=True, help='Timm Used Model')
 
     parser.add_argument('--model-name', type=str, default=None, help='Your Model Name')
 
@@ -220,10 +218,7 @@ def parse_args():
 
     parser.add_argument("--weight-decay", type=float, help="Weight Decay", default=0.001)
 
-    parser.add_argument("--train-files", type=str, help="Learning Rate Scheduler", default='/home/alexandre.lopes1/monodepth_train/train')
-    parser.add_argument("--val-files", type=str, help="Learning Rate Scheduler", default='/home/alexandre.lopes1/monodepth_train/train')
-    parser.add_argument("--png", help="if data is png, activate --png", action="store_true")    
-  
+
     return parser.parse_args()
 
 

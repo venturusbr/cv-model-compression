@@ -49,10 +49,11 @@ class Trainer:
             val_dataset = None
             num_classes = 2
 
-        model = timm.create_model(opt.model, pretrained=True, num_classes=num_classes)
-
         if opt.weights is not None:
             model = torch.load(opt.weights).to("cpu")
+        else:
+            model = timm.create_model(opt.model, pretrained=True, num_classes=num_classes)
+
 
         mag_imp = tp.importance.MagnitudeImportance(p=2, group_reduction='mean')
         ignored_layers = []
@@ -197,10 +198,6 @@ class Trainer:
                 torch.save(self.model, f"pruned_{self.model_name}_{acc.item()}.pt")
 
                 
-
-
-
-
 def parse_args():
     parser = argparse.ArgumentParser()
     list_of_devices = [-1, 0, 1, 2, 3]

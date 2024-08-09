@@ -155,10 +155,10 @@ class Trainer:
 
                 if saved_model is not None:
                     os.remove(saved_model)
-                saved_model = f"pruned_{self.model_name}_{acc.item()}.pt"
+                saved_model = f"teacher_{self.model_name}_{acc.item()}.pt"
 
                 best_acc = acc.item()
-                torch.save(self.model, f"teacher_{self.model_name}_{acc.item()}.pt")
+                torch.save(self.teacher, f"teacher_{self.model_name}_{acc.item()}.pt")
             
 
 def parse_args():
@@ -175,15 +175,11 @@ def parse_args():
     parser.add_argument("--image-size", type=int, help="Training height", default=224)
     parser.add_argument("--workers", type=int, help="Dataloader Workers", default=8)
     parser.add_argument("--lr", type=int, help="Learning Rate", default=1e-3)
-    parser.add_argument('--teacher', type=str, default='resnet50', help='Your Student Model', choices=list_of_models)
+    parser.add_argument('--teacher', type=str, default='resnet50', help='Your Teacher Model', required=True, choices=list_of_models)
     parser.add_argument('--model-name', type=str, default=None, help='Your Model Name')
 
 
     parser.add_argument("--weight-decay", type=float, help="Weight Decay", default=0.001)
-
-    parser.add_argument("--train-files", type=str, help="Learning Rate Scheduler", default='/home/alexandre.lopes1/monodepth_train/train')
-    parser.add_argument("--val-files", type=str, help="Learning Rate Scheduler", default='/home/alexandre.lopes1/monodepth_train/train')
-    parser.add_argument("--png", help="if data is png, activate --png", action="store_true")    
   
     return parser.parse_args()
 
