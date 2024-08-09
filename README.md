@@ -66,7 +66,7 @@ You can mix multiple compression techniques. For instance, you can apply Knowled
 
 ## Weights
 
-We also share multiple weights with these training procedures (teacher-student training and pruning training)
+We also share multiple weights with these training procedures (teacher-student training and pruning training) in the [Releases](https://github.com/venturusbr/cv-model-compression/releases/tag/v1.0) tab.
 
 ## Citation
 
