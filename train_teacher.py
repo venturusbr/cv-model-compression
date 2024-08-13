@@ -170,7 +170,7 @@ def parse_args():
     parser.add_argument('--device', type=int, help='cuda device, i.e. 0 or 0,1,2,3 or cpu (-1)', default=0, choices=list_of_devices)
     parser.add_argument('--dataset', type=str, default='pets37', help='Your Training Dataset', choices=list_of_datasets)
     parser.add_argument('--epochs', type=int, default=100)
-    parser.add_argument('--batch-size', type=int, default=128, help='total batch size for all GPUs')
+    parser.add_argument('--batch-size', type=int, default=200, help='total batch size for all GPUs')
 
     parser.add_argument("--image-size", type=int, help="Training height", default=224)
     parser.add_argument("--workers", type=int, help="Dataloader Workers", default=8)
