@@ -29,7 +29,7 @@ The final model will be saved with the "kd_" prefix
 
 ### Pruning
 
-The Network Pruning strategy used here is based on [3] Depgraph paper (also [torch-pruning](https://github.com/VainF/Torch-Pruning)). You should preferably use a pretrained model on the Pet37 dataset with the *--weights* flag, or pass a new untrained model using *--model*. 
+The Network Pruning strategy used here is based on [3] Depgraph paper (a.k.a [torch-pruning](https://github.com/VainF/Torch-Pruning)). You should preferably use a pretrained model on the Pet37 dataset with the *--weights* flag, or pass a new untrained model using *--model*. 
 
 Pruning Argments: *--pruning-steps* and *--pruning-ratio*
 
