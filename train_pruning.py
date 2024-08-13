@@ -213,13 +213,13 @@ def parse_args():
     parser.add_argument("--workers", type=int, help="Dataloader Workers", default=8)
     parser.add_argument("--lr", type=int, help="Learning Rate", default=1e-3)
     parser.add_argument('--model', type=str, default='', help='Timm Used Model', choices=list_of_models)
-    parser.add_argument('--weights', type=str, default=None, help='Timm Used Model')
+    parser.add_argument('--weights', type=str, default=None, help='Trained Model')
 
     parser.add_argument('--model-name', type=str, default=None, help='Your Model Name')
     parser.add_argument("--weight-decay", type=float, help="Weight Decay", default=0.001)
 
     parser.add_argument('--pruning-steps', type=int, default=1, help='Iterative Pruning Steps to take')
-    parser.add_argument('--pruning-ratio', type=int, default=0.5, help='Pruning Ratio')
+    parser.add_argument('--pruning-ratio', type=float, default=0.2, help='Pruning Ratio')
 
 
 
