@@ -189,9 +189,12 @@ class Trainer:
                 saved_model = f"quantized_{self.model_name}_{acc.item()}.pt"
 
                 best_acc = acc.item()
-                model_int8 = torch.ao.quantization.convert(self.model)
+                cpu_mod = self.model.to("cpu")
+                model_int8 = torch.ao.quantization.convert(cpu_mod)
 
                 torch.save(model_int8, f"quantized_{self.model_name}_{acc.item()}.pt")
+
+                self.model.to("cuda:0")
             
 
 def parse_args():
